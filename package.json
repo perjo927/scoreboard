@@ -1,0 +1,23 @@
+{
+	"name": "scoreboard",
+	"version": "0.0.1",
+	"author": "Per Jonsson",
+	"license": "ISC",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/perjo927/scoreboard.git"
+	},
+	"scripts": {
+		"build": "parcel build src/index.html",
+		"start": "parcel src/index.html --open",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"devDependencies": {
+		"parcel-bundler": "^1.9.7"
+	},
+	"dependencies": {
+		"gun": "^0.9.99993",
+		"hyperhtml": "^2.13.1",
+		"moment": "^2.22.2"
+	}
+}
