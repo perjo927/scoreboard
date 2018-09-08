@@ -1,2 +1,2 @@
-# scoreboard
+# Scoreboard
 A scoreboard
