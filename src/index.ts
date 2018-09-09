@@ -1,16 +1,17 @@
 import hyperHTML from "hyperhtml";
 import moment from "moment";
+import "moment-countdown";
 import Chartist from "chartist";
 
-function tick(render) {
+function countdown(render) {
   render`
-    <div>
-      ${moment("20181231", "YYYYMMDD").fromNow()}.
+    <div class="stats alert">
+      ${moment("20181231").countdown().toString() + " left"}.
     </div>
   `;
 }
-setInterval(tick, 1000,
-  hyperHTML(document.getElementById('root'))
+setInterval(countdown, 1000,
+  hyperHTML(document.getElementById('countdown'))
 );
 
 var data = {
@@ -23,12 +24,16 @@ var data = {
 var options = {
   axisX: {
     type: Chartist.AutoScaleAxis,
+    labelInterpolationFnc: function(value) {
+      return 'w.' + value;
+    },
     onlyInteger: true,
     low: 36,
     high: 52
   },
   axisY: {
-    type: Chartist.FixedScaleAxis,
+    type: Chartist.AutoScaleAxis,
+    onlyInteger: true,
     ticks: [0, 25, 50, 75, 100, 125, 150],
     low: 0,
     high: 150
@@ -37,3 +42,40 @@ var options = {
 };
 
 new Chartist.Line('.ct-chart', data, options);
+new Chartist.Bar('.ct-chart-2', {
+  series: [
+    [5],
+  ]
+}, {
+  horizontalBars: true,
+  axisX: {
+    type: Chartist.AutoScaleAxis,
+    onlyInteger: true,
+    low: 0,
+    high: 150
+  },
+  axisY: {
+    offset: 50
+  },
+  height: 100
+});
+
+new Chartist.Bar('.ct-chart-1', {
+  series: [
+    [51], // todo: moment relative
+  ]
+}, {
+  horizontalBars: true,
+  reverseData: true,
+
+  axisX: {
+    type: Chartist.AutoScaleAxis,
+    onlyInteger: true,
+    low: 36, // todo: moment absolute
+    high: 52 // todo: moment absolute
+  },
+  axisY: {
+    offset: 50
+  },
+  height: 100
+});

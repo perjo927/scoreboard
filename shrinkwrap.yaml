@@ -1,7 +1,9 @@
 dependencies:
   chartist: 0.11.0
+  countdown: 2.6.0
   gun: 0.9.99993
   hyperhtml: 2.13.1
+  moment-countdown: 0.0.3
 devDependencies:
   moment: 2.22.2
   parcel-bundler: 1.9.7
@@ -1139,6 +1141,10 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha512-6DWfizHriCrFWURP1/qyhsiFvYdlJzbCzmtFWh744+KyWsJo5+kPzUZZaMRSSItoYc0pxFX7gEO7ZC1/gN/7AQ==
+  /countdown/2.6.0:
+    dev: false
+    resolution:
+      integrity: sha1-Z3+446nUzE52QVkBuiU7UYrzQXc=
   /create-ecdh/4.0.3:
     dependencies:
       bn.js: 4.11.8
@@ -2611,8 +2617,14 @@ packages:
     resolution:
       integrity: sha1-MAV0OOrGz3+MR2fzhkjWaX11yQM=
       tarball: 'http://registry.npmjs.org/mkdirp/-/mkdirp-0.5.1.tgz'
+  /moment-countdown/0.0.3:
+    dependencies:
+      countdown: 2.6.0
+      moment: 2.22.2
+    dev: false
+    resolution:
+      integrity: sha1-kxAMkqpv2IS4SoOBTr3Na4fzOI0=
   /moment/2.22.2:
-    dev: true
     resolution:
       integrity: sha1-PCV/mDn8DpP/UxSWMiOeuQeD/2Y=
   /ms/2.0.0:
@@ -4458,7 +4470,9 @@ shrinkwrapMinorVersion: 7
 shrinkwrapVersion: 3
 specifiers:
   chartist: ^0.11.0
+  countdown: ^2.6.0
   gun: ^0.9.99993
   hyperhtml: ^2.13.1
   moment: ^2.22.2
+  moment-countdown: ^0.0.3
   parcel-bundler: ^1.9.7
