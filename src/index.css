@@ -60,12 +60,12 @@ main {
 
 
 
-#progress .ct-series-a .ct-bar {
+.progress-bar .ct-series-a .ct-bar {
     stroke: rgba(20,220,50,0.8);
     stroke-width: 3vh;
 }
 
-#time .ct-series-a .ct-bar {
+.time-bar .ct-series-a .ct-bar {
     stroke: rgba(255,20,20,0.8);;
     stroke-width: 3vh;
 }

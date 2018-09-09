@@ -13,15 +13,22 @@ function countdown(render) {
 setInterval(countdown, 1000,
   hyperHTML(document.getElementById('countdown'))
 );
+const progressRender = hyperHTML.bind(document.getElementById("progress"));
+progressRender`
+    <div class="stats success">
+      ${0 + " items done"}.
+    </div>
+`;
 
-var data = {
+
+const data = {
   series: [[
     {x: 36, y: 0},
     {x: 37, y: 100}
   ]]
 };
 
-var options = {
+const options = {
   axisX: {
     type: Chartist.AutoScaleAxis,
     labelInterpolationFnc: function(value) {
@@ -41,8 +48,8 @@ var options = {
   showArea: true
 };
 
-new Chartist.Line('.ct-chart', data, options);
-new Chartist.Bar('.ct-chart-2', {
+new Chartist.Line('.line-chart', data, options);
+new Chartist.Bar('.progress-bar', {
   series: [
     [5],
   ]
@@ -60,7 +67,7 @@ new Chartist.Bar('.ct-chart-2', {
   height: 100
 });
 
-new Chartist.Bar('.ct-chart-1', {
+new Chartist.Bar('.time-bar', {
   series: [
     [51], // todo: moment relative
   ]
