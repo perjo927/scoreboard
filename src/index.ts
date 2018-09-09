@@ -10,12 +10,11 @@ class Stats extends hyperHTML.Component {
 
   get defaultState() { 
     return {
-      date: this.count(),
       stats: [
         {
           type: "alert",
           progress: 85,
-          amount: null, // function
+          amount: null,
           text: this.count() + " left."
         },
         {
@@ -40,7 +39,6 @@ class Stats extends hyperHTML.Component {
 
   render() {
     return this.html`
-      <div class="stats alert"> ${this.state.date}.</div>
       <div class="statistics">
         ${this.state.stats.map(stat => ProgressBar(stat))}
       </div>
