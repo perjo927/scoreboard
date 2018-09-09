@@ -2,22 +2,9 @@
 
 :root {
     --text-shadow: 0px 1px 3px #bbb, 0px 2px 2px #aaa, 0px 3px 1px #999, 0px 4px 0px #888, 0px 5px 0px #777, 0px 6px 0px #666, 0px 7px 0px #555, 0px 9px 5px #444, 0px 10px 20px #555;
-    --text-shadow-s: 0px 1px 3px #bbb, 0px 2px 2px #aaa, 0px 3px 1px #999, 0px 4px 0px #888, 0px 5px 0px #777, 0px 6px 0px #333;
-    --text-shadow-xs: 0px 1px 3px #bbb, 0px 2px 2px #333;
     --primary-font-family: 'Roboto', sans-serif;
     --secondary-font-family: 'Open Sans', sans-serif;
     /* blue, green, red, black */
-}
-
-/* @keyframes width {
-    from { width: 0;}
-    to { width: 100px;}
-} */
-
-#time {
-    /* animation-name: width;
-    animation-duration: 1s;
-    width: 100px; */
 }
 
 body {
@@ -25,7 +12,7 @@ body {
 }
 
 h1 {
-    font-size: 5vh;
+    font-size: 2.5em;
     letter-spacing: 2vw;
     line-height: 1.5em;
     text-shadow: var(--text-shadow);
@@ -33,24 +20,20 @@ h1 {
 h1, h2, h3 {
     text-align: center;
     font-family: var(--primary-font-family);
-    color: white;
+    color: #c1c1c1;
+}
+
+.grid {
+    display: flex; 
+    margin: 2em 5vw 2em 5vw;
 }
 
 .stats {
-    font-size: 3vw;
+    font-size: 2em;
     font-family: var(--secondary-font-family);
     text-align: center;
 }
 
-.alert {
-    color: red;
-    text-shadow: 0 0 20px red;
-}
-
-.success {
-    color: green;
-    text-shadow: 0 0 20px green;
-}
 
 main {
     margin: 1em 1em;
@@ -60,19 +43,6 @@ main {
 
 
 
-.progress-bar .ct-series-a .ct-bar {
-    stroke: rgba(20,220,50,0.8);
-    stroke-width: 3vh;
-}
-
-.time-bar .ct-series-a .ct-bar {
-    stroke: rgba(255,20,20,0.8);;
-    stroke-width: 3vh;
-}
-
-/* #time .ct-label {
-    color: white;
-} */
 
 .ct-label {
     font-family: var(--secondary-font-family) !important;
@@ -107,4 +77,55 @@ main .ct-series-a .ct-point {
 main .ct-series-a .ct-area {
     fill: rgba(0,150,250,0.9);
     fill-opacity: 0.2;
+}
+
+.alert {
+    color: red;
+    text-shadow: 0 0 20px red;
+}
+
+.success {
+    color: green;
+    text-shadow: 0 0 20px green;
+}
+
+.warning {
+    color: gold;
+    text-shadow: 0 0 20px gold;
+}
+
+.alert-box {
+    box-shadow: 0 0 20px 2px red;
+}
+.success-box {
+    box-shadow: 0 0 20px 2px green;
+}
+.warning-box {
+    box-shadow: 0 0 20px 2px gold;
+}
+.bar {
+    height: 2vh;
+}
+.alert-bar-empty {
+    background: rgba(255, 0, 0, 0.4);
+}
+
+.alert-bar-filled {
+    background: rgba(255, 0, 0, 0.85);
+}
+
+.success-bar-empty {
+    background: rgba(0, 128, 0, 0.4);
+}
+
+.success-bar-filled {
+    background: rgba(0, 128, 0, 0.85);
+}
+
+.warning-bar-empty {
+    background: rgba(255, 215, 0, 0.4);
+}
+
+.warning-bar-filled {
+    background: rgba(255, 215, 0, 0.85);
 }

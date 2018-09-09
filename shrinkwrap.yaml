@@ -3,6 +3,7 @@ dependencies:
   countdown: 2.6.0
   gun: 0.9.99993
   hyperhtml: 2.13.1
+  hyperhtml-element: 3.0.1
   moment-countdown: 0.0.3
 devDependencies:
   moment: 2.22.2
@@ -2051,6 +2052,12 @@ packages:
     dev: true
     resolution:
       integrity: sha1-7AbBDgo0wPL68Zn3/X/Hj//QPHM=
+  /hyperhtml-element/3.0.1:
+    dependencies:
+      hyperhtml: 2.13.1
+    dev: false
+    resolution:
+      integrity: sha512-cIT55lAz65IKPBQKVjsTh9pNxTayH0AAK89/+bDbushdQK1Zma7t3TEH2Ng9Hf2zXw1K1ZZrNe4Yaaukw44j0g==
   /hyperhtml/2.13.1:
     dependencies:
       lightercollective: 0.1.0
@@ -4473,6 +4480,7 @@ specifiers:
   countdown: ^2.6.0
   gun: ^0.9.99993
   hyperhtml: ^2.13.1
+  hyperhtml-element: ^3.0.1
   moment: ^2.22.2
   moment-countdown: ^0.0.3
   parcel-bundler: ^1.9.7

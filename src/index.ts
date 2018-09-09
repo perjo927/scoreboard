@@ -1,25 +1,87 @@
+// import data from "./data";
+// import HyperHTMLElement from "hyperhtml-element";
 import hyperHTML from "hyperhtml";
 import moment from "moment";
 import "moment-countdown";
 import Chartist from "chartist";
 
-function countdown(render) {
-  render`
-    <div class="stats alert">
-      ${moment("20181231").countdown().toString() + " left"}.
-    </div>
-  `;
-}
-setInterval(countdown, 1000,
-  hyperHTML(document.getElementById('countdown'))
-);
-const progressRender = hyperHTML.bind(document.getElementById("progress"));
-progressRender`
-    <div class="stats success">
-      ${0 + " items done"}.
-    </div>
-`;
+class Stats extends hyperHTML.Component {
+  state: any;
 
+  get defaultState() { 
+    return {
+      date: this.count(),
+      stats: [
+        {
+          type: "alert",
+          progress: 85,
+          amount: null, // function
+          text: this.count() + " left."
+        },
+        {
+          type: "success",
+          progress: 5,
+          amount: 0,
+          text: "items done."
+        },
+        {
+          type: "warning",
+          progress: 5,
+          amount: 0,
+          text: "coins collected."
+        }
+      ]
+    }; 
+  }
+
+  private count() {
+    return moment("20181231").countdown().toString();
+  }
+
+  render() {
+    return this.html`
+      <div class="stats alert"> ${this.state.date}.</div>
+      <div class="statistics">
+        ${this.state.stats.map(stat => ProgressBar(stat))}
+      </div>
+      `;
+  }
+}
+
+function ProgressBar(data) {
+  return hyperHTML.wire(data, ':progress-bar')`
+    <div id=${data.type} class=${data.type + " stats"}>
+     ${data.amount} ${data.text}
+    </div>
+    <div class=${data.type + "-box grid"} >
+        <span 
+          class=${data.type + "-bar-filled bar"} 
+          style=${"width: "+ data.progress +"vw;"}>
+        </span>
+        <span 
+          class=${data.type + "-bar-empty bar"} 
+          style=${"width: "+ (100-data.progress) +"vw;"}>
+        </span>
+    </div>
+  `
+}
+
+function Chart() {
+  return hyperHTML.wire(data, ':chart')`
+    <div class="line-chart .ct-square"></div>
+  `
+}
+
+const update = () => hyperHTML(document.getElementById("stats"))`
+  ${new Stats}
+`;
+update();
+setInterval(update, 1000);
+
+
+hyperHTML.bind(document.getElementById('chart'))`
+  ${Chart()}
+`;
 
 const data = {
   series: [[
@@ -49,40 +111,3 @@ const options = {
 };
 
 new Chartist.Line('.line-chart', data, options);
-new Chartist.Bar('.progress-bar', {
-  series: [
-    [5],
-  ]
-}, {
-  horizontalBars: true,
-  axisX: {
-    type: Chartist.AutoScaleAxis,
-    onlyInteger: true,
-    low: 0,
-    high: 150
-  },
-  axisY: {
-    offset: 50
-  },
-  height: 100
-});
-
-new Chartist.Bar('.time-bar', {
-  series: [
-    [51], // todo: moment relative
-  ]
-}, {
-  horizontalBars: true,
-  reverseData: true,
-
-  axisX: {
-    type: Chartist.AutoScaleAxis,
-    onlyInteger: true,
-    low: 36, // todo: moment absolute
-    high: 52 // todo: moment absolute
-  },
-  axisY: {
-    offset: 50
-  },
-  height: 100
-});
