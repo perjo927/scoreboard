@@ -1,11 +1,19 @@
 <html>
     <head>
+        <title>Scoreboard</title>
+        <link rel="stylesheet" type="text/css" href="./index.css">
+        <link rel="stylesheet" type="text/css" href="../node_modules/chartist/dist/chartist.css">
     </head>
     <body>
-        <div id="root">
-            <!-- This div's content will be managed by hyperHTML. -->
-        </div>
+        <h1>Scoreboard</h1>
+        <section>
+            <h2>Time Left</h2>
+            <div id="root"></div>
+            <h2>% Done</h2>
+        </section>
+        <main>
+            <div class="ct-chart .ct-square"></div>
+        </main>
     </body>
     <script src="index.ts"></script>
-
 </html>

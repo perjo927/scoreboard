@@ -1,4 +1,5 @@
 dependencies:
+  chartist: 0.11.0
   gun: 0.9.99993
   hyperhtml: 2.13.1
 devDependencies:
@@ -900,6 +901,12 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha512-ObN6h1v2fTJSmUXoS3nMQ92LbDK9be4TV+6G+omQlGJFdcUX5heKi1LZ1YnRMIgwTLEj3E24bT6tYni50rlCfQ==
+  /chartist/0.11.0:
+    dev: false
+    engines:
+      node: '>=4.6.0'
+    resolution:
+      integrity: sha1-hLpeBUkNCW2T3PqTQ+vDHvajvSg=
   /chokidar/2.0.4:
     dependencies:
       anymatch: 2.0.0
@@ -4450,6 +4457,7 @@ registry: 'https://registry.npmjs.org/'
 shrinkwrapMinorVersion: 7
 shrinkwrapVersion: 3
 specifiers:
+  chartist: ^0.11.0
   gun: ^0.9.99993
   hyperhtml: ^2.13.1
   moment: ^2.22.2

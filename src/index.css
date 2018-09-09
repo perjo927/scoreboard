@@ -1,0 +1,42 @@
+body {
+    background: black;
+}
+
+h1, h2, h3 {
+    color: white;
+}
+
+main {
+    margin: 1em 1em;
+    height: 70vh;
+    width: 80vw;
+}
+
+main .ct-grid {
+    stroke: rgba(200, 200, 200, 0.9) ;
+    stroke-width: 1px ;
+    stroke-dasharray: 2px ; 
+}
+  
+main .ct-label {
+    fill: rgba(200, 200, 200, 0.9) ;
+    color: rgba(200, 200, 200, 0.9) ;
+    font-size: 0.75rem;
+    line-height: 1; 
+}
+
+main .ct-series-a .ct-line {
+    stroke: rgba(10,100,250,0.9);
+    stroke-width: 5px;
+}
+
+main .ct-series-a .ct-point {
+    stroke: rgba(0,150,250,0.9);;
+    stroke-width: 10px;
+}
+
+
+main .ct-series-a .ct-area {
+    fill: rgba(0,150,250,0.9);
+    fill-opacity: 0.2;
+}
