@@ -4,7 +4,7 @@
     --text-shadow: 0px 1px 3px #bbb, 0px 2px 2px #aaa, 0px 3px 1px #999, 0px 4px 0px #888, 0px 5px 0px #777, 0px 6px 0px #666, 0px 7px 0px #555, 0px 9px 5px #444, 0px 10px 20px #555;
     --primary-font-family: 'Roboto', sans-serif;
     --secondary-font-family: 'Open Sans', sans-serif;
-    /* blue, green, red, black */
+    /* TODO: theme colors: blue, green, red, black, etc. */
 }
 
 body {
@@ -17,14 +17,14 @@ h1 {
     line-height: 1.5em;
     text-shadow: var(--text-shadow);
 }
-h1, h2, h3 {
+h1, h2, h3, h4 {
     text-align: center;
     font-family: var(--primary-font-family);
-    color: #c1c1c1;
+    color: #fff;
 }
 
 .grid {
-    display: flex; 
+    display: flex;
     margin: 2em 5vw 2em 5vw;
 }
 
@@ -53,55 +53,73 @@ main {
 main .ct-grid {
     stroke: rgba(200, 200, 200, 0.9) ;
     stroke-width: 1px ;
-    stroke-dasharray: 2px ; 
+    stroke-dasharray: 2px ;
 }
-  
+
 main .ct-label {
     fill: rgba(200, 200, 200, 0.9) ;
     color: rgba(200, 200, 200, 0.9) ;
     font-size: 0.75rem;
-    line-height: 1; 
+    line-height: 1;
 }
 
 main .ct-series-a .ct-line {
-    stroke: rgba(10,100,250,0.9);
+    stroke: rgba(0, 128, 0, 0.9);
     stroke-width: 5px;
 }
 
 main .ct-series-a .ct-point {
-    stroke: rgba(0,150,250,0.9);;
+    stroke: rgba(0, 128, 0, 0.9);
     stroke-width: 10px;
 }
 
 
 main .ct-series-a .ct-area {
-    fill: rgba(0,150,250,0.9);
-    fill-opacity: 0.2;
+    fill: rgba(0, 128, 0, 0.9);
+    fill-opacity: 0.4;
+}
+
+main .ct-series-b .ct-point, .ct-series-b .ct-line, .ct-series-b .ct-bar, .ct-series-b .ct-slice-donut {
+    stroke: rgba(255,255,255, 0.5) !important;
+    stroke-width: 2px;
+    stroke-linecap: round;
+    stroke-dasharray: 5px 8px;
+}
+
+main .ct-series-b .ct-area {
+    fill: rgba(255,255,255,0.9);
+    fill-opacity: 0.1;
+}
+
+main .ct-series-c .ct-point, .ct-series-c .ct-line, .ct-series-c .ct-bar, .ct-series-c .ct-slice-donut {
+    stroke: rgba(220, 255, 0, 0.5) !important;
+    stroke-width: 2px;
+    stroke-linecap: round;
+    stroke-dasharray: 5px 8px;
+}
+
+main .ct-series-c .ct-area {
+    fill: rgba(0, 128, 0, 0.9);
+    fill-opacity: 0;
 }
 
 .alert {
     color: red;
-    text-shadow: 0 0 20px red;
 }
 
 .success {
     color: green;
-    text-shadow: 0 0 20px green;
 }
 
 .warning {
     color: gold;
-    text-shadow: 0 0 20px gold;
 }
 
 .alert-box {
-    box-shadow: 0 0 20px 2px red;
 }
 .success-box {
-    box-shadow: 0 0 20px 2px green;
 }
 .warning-box {
-    box-shadow: 0 0 20px 2px gold;
 }
 .bar {
     height: 2vh;
@@ -111,7 +129,7 @@ main .ct-series-a .ct-area {
 }
 
 .alert-bar-filled {
-    background: rgba(255, 0, 0, 0.85);
+    background: rgba(255, 0, 0, 0.9);
 }
 
 .success-bar-empty {
@@ -119,7 +137,7 @@ main .ct-series-a .ct-area {
 }
 
 .success-bar-filled {
-    background: rgba(0, 128, 0, 0.85);
+    background: rgba(0, 128, 0, 0.9);
 }
 
 .warning-bar-empty {
@@ -127,5 +145,36 @@ main .ct-series-a .ct-area {
 }
 
 .warning-bar-filled {
-    background: rgba(255, 215, 0, 0.85);
+    background: rgba(255, 215, 0, 0.9);
+}
+
+ul {
+    position: absolute;
+    margin: 0;
+    margin-top: 1em;
+    display: inline-block;
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    padding-left: 16px;
+}
+
+li:before {
+    content: "—"; /* Insert content that looks like bullets */
+    padding-right: 8px;
+}
+
+.actual {
+    color: rgba(0, 128, 0, 0.9);
+}
+
+.ideal {
+    color: rgba(255,255,0.5);
+}
+
+.projected {
+    color: rgba(255,255,255, 0.5);
+
 }

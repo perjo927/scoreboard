@@ -1,5 +1,4 @@
-// import data from "./data";
-// import HyperHTMLElement from "hyperhtml-element";
+import { data } from "./data";
 import hyperHTML from "hyperhtml";
 import moment from "moment";
 import "moment-countdown";
@@ -8,34 +7,28 @@ import Chartist from "chartist";
 class Stats extends hyperHTML.Component {
   state: any;
 
-  get defaultState() { 
-    return {
-      stats: [
-        {
-          type: "alert",
-          progress: 85,
-          amount: null,
-          text: this.count() + " left."
-        },
-        {
-          type: "success",
-          progress: 5,
-          amount: 0,
-          text: "items done."
-        },
-        {
-          type: "warning",
-          progress: 5,
-          amount: 0,
-          text: "coins collected."
-        }
-      ]
-    }; 
+  get defaultState() {
+    this.state = {stats: data.stats};
+
+    this.state.stats[0].text = "Time left: " + this.count();
+    this.state.stats[0].progress = 100-this.getTimeProgress();
+
+    return this.state;
   }
 
   private count() {
     return moment("20181231").countdown().toString();
   }
+
+  private getTimeProgress() {
+    const start = new Date(2018, 8, 0, 0, 0, 0, 0);
+    const end = new Date(2018, 11, 31, 0, 0, 0, 0);
+    const today = new Date();
+    const total = end.getTime() - start.getTime();
+    const elapsed = today.getTime() - start.getTime();
+    return( elapsed / total )*100;
+  }
+
 
   render() {
     return this.html`
@@ -49,15 +42,15 @@ class Stats extends hyperHTML.Component {
 function ProgressBar(data) {
   return hyperHTML.wire(data, ':progress-bar')`
     <div id=${data.type} class=${data.type + " stats"}>
-     ${data.amount} ${data.text}
+     ${data.isCustom ? data.text : data.amount + " " + data.text}
     </div>
     <div class=${data.type + "-box grid"} >
-        <span 
-          class=${data.type + "-bar-filled bar"} 
+        <span
+          class=${data.type + "-bar-filled bar"}
           style=${"width: "+ data.progress +"vw;"}>
         </span>
-        <span 
-          class=${data.type + "-bar-empty bar"} 
+        <span
+          class=${data.type + "-bar-empty bar"}
           style=${"width: "+ (100-data.progress) +"vw;"}>
         </span>
     </div>
@@ -81,13 +74,6 @@ hyperHTML.bind(document.getElementById('chart'))`
   ${Chart()}
 `;
 
-const data = {
-  series: [[
-    {x: 36, y: 0},
-    {x: 37, y: 100}
-  ]]
-};
-
 const options = {
   axisX: {
     type: Chartist.AutoScaleAxis,
@@ -108,4 +94,4 @@ const options = {
   showArea: true
 };
 
-new Chartist.Line('.line-chart', data, options);
+new Chartist.Line('.line-chart', data.chart, options);
